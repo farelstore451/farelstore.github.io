@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>🍽️ Pesan Makanan - Menu Lengkap</title>
+    <!-- Font Awesome 6 (gratis) untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <style>
+        /* ---------- RESET & GLOBAL ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+
+        body {
+            background: #f8f5f0;
+            color: #2d2a24;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #e0d6c8;
+            padding-bottom: 1.2rem;
+        }
+
+        .header h1 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #3e2e1f;
+        }
+
+        .header h1 i {
+            color: #c0392b;
+            margin-right: 10px;
+        }
+
+        .header .cart-icon {
+            font-size: 1.6rem;
+            background: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border: 1px solid #e6ddd2;
+            cursor: default;
+        }
+
+        .header .cart-icon i {
+            color: #c0392b;
+            margin-right: 8px;
+        }
+
+        /* ---------- KATEGORI / FILTER (opsional) ---------- */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .categories span {
+            background: #fff;
+            padding: 0.5rem 1.6rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #4d3e2e;
+            border: 1px solid #ddd2c4;
+            transition: 0.2s;
+            cursor: default;
+        }
+
+        .categories span.active {
+            background: #3e2e1f;
+            color: #fff;
+            border-color: #3e2e1f;
+        }
+
+        .categories span i {
+            margin-right: 6px;
+        }
+
+        /* ---------- GRID MENU ---------- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem 1.8rem;
+        }
+
+        /* ---------- CARD MAKANAN ---------- */
+        .food-card {
+            background: #ffffff;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transition: transform 0.25s ease, box-shadow 0.3s ease;
+            border: 1px solid #ede7df;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .food-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.10);
+        }
+
+        /* ----- FOTO MAKANAN (rasio 1:1) ----- */
+        .food-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: #f0ebe4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            color: #b8a694;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gambar sebagai background (untuk foto nyata) */
+        .food-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* fallback jika gambar tidak muncul, tetap ada icon */
+        .food-img .fallback-icon {
+            position: absolute;
+            font-size: 4.5rem;
+            color: #d6cbbc;
+            opacity: 0.25;
+            pointer-events: none;
+        }
+
+        /* ----- BADGE / LABEL ----- */
+        .food-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: #c0392b;
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            letter-spacing: 0.4px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 8px rgba(192, 57, 43, 0.3);
+        }
+
+        .food-badge.hitam {
+            background: #2d2a24;
+        }
+
+        /* ----- KONTEN CARD ----- */
+        .food-body {
+            padding: 1.2rem 1.2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .food-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #2d241c;
+            margin-bottom: 0.3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .food-name span {
+            font-size: 0.8rem;
+            background: #f0ebe4;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            color: #5f4d3a;
+            font-weight: 600;
+        }
+
+        .food-desc {
+            font-size: 0.9rem;
+            color: #5f5446;
+            margin: 0.4rem 0 0.8rem;
+            line-height: 1.4;
+            flex: 1;
+        }
+
+        .food-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            border-top: 1px solid #f0ebe4;
+            padding-top: 0.9rem;
+        }
+
+        .food-price {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #2d241c;
+        }
+
+        .food-price small {
+            font-weight: 400;
+            font-size: 0.8rem;
+            color: #7a6b5a;
+            margin-left: 3px;
+        }
+
+        .btn-order {
+            background: #3e2e1f;
+            border: none;
+            color: #fff;
+            padding: 0.55rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .btn-order i {
+            font-size: 0.9rem;
+        }
+
+        .btn-order:hover {
+            background: #c0392b;
+            border-color: #a93226;
+            transform: scale(1.02);
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 600px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .header h1 {
+                font-size: 1.7rem;
+            }
+            .header .cart-icon {
+                font-size: 1.2rem;
+                padding: 0.4rem 1rem;
+            }
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 1.2rem;
+            }
+            .food-body {
+                padding: 1rem;
+            }
+            .food-name {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+                max-width: 380px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ---------- FOOTER KECIL ---------- */
+        .footer-note {
+            margin-top: 3.5rem;
+            text-align: center;
+            color: #8f7e6b;
+            font-size: 0.9rem;
+            border-top: 1px solid #e0d6c8;
+            padding-top: 1.8rem;
+        }
+
+        .footer-note i {
+            color: #c0392b;
+            margin: 0 4px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1><i class="fas fa-utensils"></i> Warung Mas Farel</h1>
+        <div class="cart-icon">
+            <i class="fas fa-shopping-bag"></i> 0 item
+        </div>
+    </header>
+
+    <!-- KATEGORI (dekoratif) -->
+    <div class="categories">
+        <span class="active"><i class="fas fa-th-list"></i> Semua</span>
+        <span><i class="fas fa-bacon"></i> Nasi</span>
+        <span><i class="fas fa-egg"></i> Ayam</span>
+        <span><i class="fas fa-fish"></i> Seafood</span>
+        <span><i class="fas fa-seedling"></i> Sayur</span>
+        <span><i class="fas fa-coffee"></i> Minuman</span>
+    </div>
+
+    <!-- GRID MAKANAN (dengan foto lengkap) -->
+    <div class="menu-grid">
+
+        <!-- 1. NASI GORENG SPESIAL -->
+        <div class="food-card">
+            <div class="food-img">
+                <img src="c:\Users\MUH FHAREL PEBRIAN\Downloads\Nasi Goreng Spesial Solaria 🤩.jpg" alt="Nasi Goreng Spesial" loading="lazy">
+                <span class="food-badge">Populer</span>
+            </div>
+            <div class="food-body">
+                <div class="food-name">
+                    Nasi Goreng Spesial
+                    <span>⭐ 4.9</span>
+                </div>
+                <p class="food-desc">Nasi goreng dengan ayam, udang, telur, dan sayuran segar.</p>
+                <div class="food-footer">
+                    <span class="food-price">Rp 35.000 <small>/ porsi</small></span>
+                    <button class="btn-order"><i class="fas fa-plus"></i> Pesan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. AYAM BAKAR TALIWANG -->
+        <div class="food-card">
+            <div class="food-img">
+                <img src="c:\Users\MUH FHAREL PEBRIAN\Downloads\Ayam Bakar Taliwang (NTB) _ Aneka Masakan Tradisional Indonesia.jpg" alt="Ayam Bakar Taliwang" loading="lazy">
+                <span class="food-badge hitam">Best Seller</span>
+            </div>
+            <div class="food-body">
+                <div class="food-name">
+                    Ayam Bakar Taliwang
+                    <span>⭐ 4.8</span>
+                </div>
+                <p class="food-desc">Ayam bakar dengan olesan rempah khas NTB, disajikan dengan sambal dan lalapan.</p>
+                <div class="food-footer">
+                    <span class="food-price">Rp 50.000 <small>/ porsi</small></span>
+                    <button class="btn-order"><i class="fas fa-plus"></i> Pesan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. SATE AYAM LONTONG -->
+        <div class="food-card">
+            <div class="food-img">
+                <img src="c:\Users\MUH FHAREL PEBRIAN\Downloads\sate ayam lontong.jpg" alt="Sate Ayam Lontong" loading="lazy">
+                <span class="food-badge">Favorit</span>
+            </div>
+            <div class="food-body">
+                <div class="food-name">
+                    Sate Ayam Lontong
+                    <span>⭐ 4.7</span>
+                </div>
+                <p class="food-desc">10 tusuk sate ayam dengan bumbu kacang, lontong, dan acar.</p>
+                <div class="food-footer">
+                    <span class="food-price">Rp 15.000 <small>/ porsi</small></span>
+                    <button class="btn-order"><i class="fas fa-plus"></i> Pesan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. GADO-GADO -->
+        <div class="food-card">
+            <div class="food-img">
+                <img src="c:\Users\MUH FHAREL PEBRIAN\Downloads\Gado gado.jpg" alt="Gado-Gado" loading="lazy">
+                <span class="food-badge hitam">Sehat</span>
+            </div>
+            <div class="food-body">
+                <div class="food-name">
+                    Gado-Gado
+                    <span>⭐ 4.6</span>
+                </div>
+                <p class="food-desc">Sayuran rebus dengan tahu, tempe, telur, dan saus kacang gurih.</p>
+                <div class="food-footer">
+                    <span class="food-price">Rp 15.500 <small>/ porsi</small></span>
+                    <button class="btn-order"><i class="fas fa-plus"></i> Pesan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. MIE GORENG SEAFOOD -->
+        <div class="food-card">
+            <div class="food-img">
+                <img src="c:\Users\MUH FHAREL PEBRIAN\Downloads\mie goreng seafood.jpg" alt="Mie Goreng Seafood" loading="lazy">
+                <span class="food-badge">Spesial</span>
+            </div>
+            <div class="food-body">
+                <div class="food-name">
+                    Mie Goreng Seafood
+                    <span>⭐ 4.9</span>
+                </div>
+                <p class="food-desc">Mie goreng dengan udang, cumi, dan tomat, rasa gurih pedas.</p>
+                <div class="food-footer">
+                    <span class="food-price">Rp 53.000 <small>/ porsi</small></span>
+                    <button class="btn-order"><i class="fas fa-plus"></i> Pesan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. RAWON SAPI -->
+        <div class="food-card">
+            <div class="food-img">
+                <img src="c:\Users\MUH FHAREL PEBRIAN\Downloads\Rawon sapi.jpg" alt="Rawon Sapi" loading="lazy">
+                <span class="food-badge hitam">Klasik</span>
+            </div>
+            <div class="food-body">
+                <div class="food-name">
+                    Rawon Sapi
+                    <span>⭐ 4.8</span>
+                </div>
+                <p class="food-desc">Sup daging sapi dengan kuah hitam khas, telur asin & sambal.</p>
+                <div class="food-footer">
+                    <span class="food-price">Rp 45.000 <small>/ porsi</small></span>
+                    <button class="btn-order"><i class="fas fa-plus"></i> Pesan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. NASI CAMPUR BALI -->
+        <div class="food-card">
+            <div class="food-img">
+                <img src="c:\Users\MUH FHAREL PEBRIAN\Downloads\Nasi Campur Bali Garpoo.jpg" alt="Nasi Campur Bali" loading="lazy">
+                <span class="food-badge">Istimewa</span>
+            </div>
+            <div class="food-body">
+                <div class="food-name">
+                    Nasi Campur Bali
+                    <span>⭐ 4.7</span>
+                </div>
+                <p class="food-desc">Nasi dengan ayam suwir, sate lilit, telur, lawar, dan sambal matah.</p>
+                <div class="food-footer">
+                    <span class="food-price">Rp 55.000 <small>/ porsi</small></span>
+                    <button class="btn-order"><i class="fas fa-plus"></i> Pesan</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. ES TEH MANIS & JERUK (minuman) -->
+        <div class="food-card">
+            <div class="food-img">
+                <img src="c:\Users\MUH FHAREL PEBRIAN\Downloads\Es teh dan es jeruk.jpg" alt="Es Teh & Jeruk" loading="lazy">
+                <span class="food-badge hitam">Segar</span>
+            </div>
+            <div class="food-body">
+                <div class="food-name">
+                    Es Teh & Jeruk
+                    <span>⭐ 4.5</span>
+                </div>
+                <p class="food-desc">Es teh manis dan es jeruk peras, pilihan minuman segar.</p>
+                <div class="food-footer">
+                    <span class="food-price">Rp 18.000 <small>/ gelas</small></span>
+                    <button class="btn-order"><i class="fas fa-plus"></i> Pesan</button>
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end menu-grid -->
+
+    <!-- FOOTER -->
+    <div class="footer-note">
+        <i class="fas fa-heart"></i> Nikmati hidangan favoritmu &mdash; semua foto menu lengkap!
+    </div>
+
+</div> <!-- end container -->
+
+<!-- sedikit interaksi tombol pesan (alert demo) -->
+<script>
+    (function() {
+        const buttons = document.querySelectorAll('.btn-order');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const card = this.closest('.food-card');
+                const name = card ? card.querySelector('.food-name')?.childNodes[0]?.textContent?.trim() : 'Makanan';
+                alert(`✅ '${name || 'Pesanan'}' ditambahkan ke keranjang!`);
+                // update cart icon (sederhana)
+                const cartIcon = document.querySelector('.cart-icon');
+                if (cartIcon) {
+                    const match = cartIcon.textContent.match(/\d+/);
+                    let count = match ? parseInt(match[0]) : 0;
+                    count += 1;
+                    cartIcon.innerHTML = `<i class="fas fa-shopping-bag"></i> ${count} item`;
+                }
+            });
+        });
+    })();
+</script>
+
+</body>
+</html>

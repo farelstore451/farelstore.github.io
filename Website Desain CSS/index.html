@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farel Phone - Smartphone Modern </title>
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f7f8fc;
+            color: #171717;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        header {
+            width: 100%;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            height: 75px;
+            margin: auto;
+            padding: 0 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .logo span,
+        footer span {
+            color: #6366f1;
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-menu a {
+            color: #4b5563;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #6366f1;
+        }
+
+        .btn-nav {
+            background: #6366f1;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-nav:hover {
+            background: #4f46e5;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            max-width: 1200px;
+            min-height: 650px;
+            margin: auto;
+            padding: 70px 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .subtitle {
+            color: #6366f1;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #6366f1;
+        }
+
+        .description {
+            max-width: 550px;
+            color: #6b7280;
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+
+        .hero-button {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-primary {
+            background: #6366f1;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4f46e5;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            color: #6366f1;
+            border: 2px solid #6366f1;
+        }
+
+        .btn-secondary:hover {
+            background: #6366f1;
+            color: white;
+        }
+
+
+        /* =========================
+           PHONE MOCKUP
+        ========================= */
+
+        .phone-area {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone {
+            width: 285px;
+            height: 560px;
+            background: #111827;
+            border-radius: 40px;
+            padding: 10px;
+
+            box-shadow:
+                0 30px 70px rgba(0, 0, 0, 0.25);
+
+            transform: rotate(5deg);
+            position: relative;
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    #818cf8,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    145deg,
+                    #111827,
+                    #312e81,
+                    #6366f1
+                );
+
+            overflow: hidden;
+            position: relative;
+        }
+
+        .speaker {
+            position: absolute;
+            width: 70px;
+            height: 7px;
+            background: #000;
+            border-radius: 20px;
+            top: 17px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .camera {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            background: #111;
+            border: 2px solid #555;
+            border-radius: 50%;
+            top: 14px;
+            right: 25px;
+            z-index: 2;
+        }
+
+        .screen-content {
+            position: absolute;
+            width: 100%;
+            top: 45%;
+            left: 0;
+            text-align: center;
+            color: white;
+        }
+
+        .screen-content p {
+            font-size: 13px;
+            letter-spacing: 5px;
+        }
+
+        .screen-content h2 {
+            font-size: 28px;
+            margin: 8px 0;
+        }
+
+        .screen-content small {
+            opacity: 0.8;
+        }
+
+
+        /* =========================
+           SECTION TITLE
+        ========================= */
+
+        section {
+            padding: 90px 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title p {
+            color: #6366f1;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 35px;
+            margin-top: 5px;
+        }
+
+
+        /* =========================
+           PRODUK
+        ========================= */
+
+        .produk {
+            background: white;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #f8fafc;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: 0.3s;
+            border: 1px solid #e5e7eb;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 250px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-black {
+            background: #e5e7eb;
+        }
+
+        .phone-blue {
+            background: #dbeafe;
+        }
+
+        .phone-silver {
+            background: #f1f5f9;
+        }
+
+        .mini-phone {
+            width: 105px;
+            height: 190px;
+
+            background: #111827;
+
+            border-radius: 20px;
+
+            border: 5px solid #27272a;
+
+            box-shadow:
+                0 15px 30px rgba(0, 0, 0, 0.25);
+
+            position: relative;
+        }
+
+        .phone-blue .mini-phone {
+            background: #2563eb;
+            border-color: #1e40af;
+        }
+
+        .phone-silver .mini-phone {
+            background: #e5e7eb;
+            border-color: #9ca3af;
+        }
+
+        .mini-phone::before {
+            content: "";
+
+            position: absolute;
+
+            width: 35px;
+            height: 35px;
+
+            background: #111827;
+
+            border-radius: 10px;
+
+            top: 10px;
+            left: 10px;
+        }
+
+        .product-info {
+            padding: 25px;
+        }
+
+        .product-info span {
+            color: #6366f1;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .product-info h3 {
+            font-size: 23px;
+            margin: 7px 0;
+        }
+
+        .product-info p {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            margin-bottom: 18px;
+        }
+
+        .price strong {
+            font-size: 19px;
+        }
+
+        .product-info button,
+        .contact button {
+            width: 100%;
+            padding: 12px;
+
+            border: none;
+
+            background: #6366f1;
+            color: white;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .product-info button:hover,
+        .contact button:hover {
+            background: #4f46e5;
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .feature-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+
+            border-radius: 15px;
+
+            border: 1px solid #e5e7eb;
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 15px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .icon {
+            width: 60px;
+            height: 60px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #eef2ff;
+
+            font-size: 25px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about {
+            background:
+                linear-gradient(
+                    135deg,
+                    #111827,
+                    #312e81
+                );
+
+            color: white;
+        }
+
+        .about-content {
+            max-width: 850px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .about .subtitle {
+            color: #a5b4fc;
+        }
+
+        .about h2 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .about p:not(.subtitle) {
+            color: #d1d5db;
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact {
+            background: white;
+        }
+
+        .contact-container {
+            max-width: 1000px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .contact-info p {
+            color: #6b7280;
+            margin-bottom: 15px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+
+            border: 1px solid #d1d5db;
+
+            padding: 14px;
+
+            border-radius: 8px;
+
+            outline: none;
+
+            resize: none;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            border-color: #6366f1;
+        }
+
+        form textarea {
+            height: 130px;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #111827;
+            color: white;
+
+            text-align: center;
+
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .product-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .feature-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        /* =========================
+           HP / MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+                height: auto;
+                padding: 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .nav-menu {
+                gap: 18px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .btn-nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 20px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .hero-button {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+            }
+
+            .phone {
+                width: 235px;
+                height: 460px;
+            }
+
+            section {
+                padding: 65px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-container {
+                grid-template-columns: 1fr;
+            }
+
+            .about h2 {
+                font-size: 32px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                Farel<span> Phone</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+
+                <li>
+                    <a href="#produk">Produk</a>
+                </li>
+
+                <li>
+                    <a href="#tentang">Tentang</a>
+                </li>
+
+                <li>
+                    <a href="#kontak">Kontak</a>
+                </li>
+            </ul>
+
+            <a href="#produk" class="btn-nav">
+                Belanja
+            </a>
+
+        </nav>
+    </header>
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <p class="subtitle">
+                SMARTPHONE TERBARU
+            </p>
+
+            <h1>
+                Teknologi Canggih
+                <br>
+                <span>Dalam Genggaman</span>
+            </h1>
+
+            <p class="description">
+                Temukan smartphone modern dengan desain elegan dan Terbaru,
+                performa cepat, kamera berkualitas, dan baterai
+                tahan lama bisa digunakan untuk kebutuhan sehari-hari.
+            </p>
+
+            <div class="hero-button">
+
+                <a href="#produk" class="btn-primary">
+                    Lihat Produk
+                </a>
+
+                <a href="#tentang" class="btn-secondary">
+                    Pelajari
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="phone-area">
+
+            <div class="phone">
+
+                <div class="speaker"></div>
+
+                <div class="screen">
+
+                    <div class="camera"></div>
+
+                    <div class="screen-content">
+
+                        <p>FAREL PHONE</p>
+
+                        <h2>
+                            SMARTPHONE MODERN DAN CANGGIH
+                        </h2>
+
+                        <small>
+                            Future In Your Hand
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PRODUK
+    ========================== -->
+
+    <section class="produk" id="produk">
+
+        <div class="section-title">
+
+            <p>
+                KOLEKSI SMARTPHONE DI FAREL PHONE
+            </p>
+
+            <h2>
+                Pilihan Produk Terbaik Di Farel Phone
+            </h2>
+
+        </div>
+
+
+        <div class="product-container">
+
+
+            <!-- PRODUK 1 -->
+
+            <div class="product-card">
+
+                <div class="product-image phone-black">
+
+                    <div class="mini-phone"></div>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span>
+                        Premium
+                    </span>
+
+                    <h3>
+                        Iphone 13 Pro
+                    </h3>
+
+                    <p>
+                        Smartphone premium Apple dengan layar 6,1 
+                        inci Super Retina XDR, chip A15 Bionic, kamera Pro 12 MP, 
+                        desain stainless steel, serta dukungan 5G.
+                    </p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rp 7.499.000
+                        </strong>
+
+                    </div>
+
+                    <button>
+                        Beli Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 2 -->
+
+            <div class="product-card">
+
+                <div class="product-image phone-blue">
+
+                    <div class="mini-phone"></div>
+
+                </div>
+
+                <div class="product-info">
+
+                    <span>
+                        Best Seller
+                    </span>
+
+                    <h3>
+                        Iphone 16 Pro
+                    </h3>
+
+                    <p>
+                        Smartphone premium Apple dengan chip A18 Pro, 
+                        kamera 48 MP, layar Super Retina XDR 6,3 inci, 
+                        desain titanium, dan fitur kamera profesional.
+                    </p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rp 17.499.000
+                        </strong>
+
+                    </div>
+
+                    <button>
+                        Beli Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUK 3 -->
+
+            <div class="product-card">
+
+                <div class="product-image phone-silver">
+
+                    <div class="mini-phone"></div>
+
+                </div>
+
+                <div class="product-info">
+                    
+                    <span>
+                        Terbaru
+                    </span>
+
+                    <h3>
+                        Iphone 17 Pro
+                    </h3>
+
+                    <p>
+                        Smartphone premium Apple dengan layar 6,3 inci Super Retina XDR, 
+                        chip A19 Pro, sistem kamera Pro Fusion 48 MP, 
+                        desain unibody aluminium, serta dukungan 5G dan Apple Intelligence.
+                        
+                    </p>
+
+                    <div class="price">
+
+                        <strong>
+                            Rp 18.999.000
+                        </strong>
+
+                    </div>
+
+                    <button>
+                        Beli Sekarang
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FITUR
+    ========================== -->
+
+    <section class="features">
+
+        <div class="section-title">
+
+            <p>
+                KEUNGGULAN
+            </p>
+
+            <h2>
+                Kenapa Memilih Kami?
+            </h2>
+
+        </div>
+
+
+        <div class="feature-container">
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Performa Cepat
+                </h3>
+
+                <p>
+                    Prosesor dengan chip Apple.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    📷
+                </div>
+
+                <h3>
+                    Kamera Berkualitas Tinggi
+                </h3>
+
+                <p>
+                    Abadikan setiap momen
+                    dengan Foto / Video berkualitas
+                    tinggi.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Keamanan dan privasi
+                </h3>
+
+                <p>
+                    Enkripsi data kuat, Face ID, kontrol izin aplikasi, 
+                    perlindungan pelacakan, dan pembaruan keamanan rutin.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🛡️
+                </div>
+
+                <h3>
+                    Garansi Resmi
+                </h3>
+
+                <p>
+                    Produk berkualitas dengan
+                    layanan garansi resmi.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TENTANG
+    ========================== -->
+
+    <section class="about" id="tentang">
+
+        <div class="about-content">
+
+            <p class="subtitle">
+                TENTANG KAMI
+            </p>
+
+            <h2>
+                Smartphone Modern
+                Untuk Generasi Digital
+            </h2>
+
+            <p>
+                Farel Phone merupakan konsep website
+                toko smartphone yang menyediakan
+                berbagai pilihan perangkat modern.
+                Kami mengutamakan desain, performa,
+                kualitas dan pengalaman pengguna.
+            </p>
+
+            <a href="#kontak" class="btn-primary">
+                Hubungi Kami
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KONTAK
+    ========================== -->
+
+    <section class="contact" id="kontak">
+
+        <div class="section-title">
+
+            <p>
+                CONTACT
+            </p>
+
+            <h2>
+                Hubungi Kami
+            </h2>
+
+        </div>
+
+
+        <div class="contact-container">
+
+
+            <div class="contact-info">
+
+                <h3>
+                    Farel Phone 451
+                </h3>
+
+                <p>
+                    Silakan hubungi kami untuk
+                    mendapatkan informasi produk
+                    smartphone/iphone.
+                </p>
+
+                <p>
+                    📍 Indonesia
+                </p>
+
+                <p>
+                    📞 0896-6393-7773
+                </p>
+
+                <p>
+                    ✉️ farelphone451@gmail.com
+                </p>
+
+            </div>
+
+
+            <form>
+
+                <input
+                    type="text"
+                    placeholder="Nama Anda"
+                >
+
+                <input
+                    type="email"
+                    placeholder="Email Anda"
+                >
+
+                <textarea
+                    placeholder="Pesan Anda"
+                ></textarea>
+
+                <button type="submit">
+                    Kirim Pesan
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <h3>
+            Farel<span>Phone</span>
+        </h3>
+
+        <p>
+            © 2026 Farel Phone.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
